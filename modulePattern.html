@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        var myobj = (function () {
+            // private members
+            var name = "my, oh my";
+            // implement the public part
+            return {
+                getName: function () {
+                    return name;
+                }
+            };
+        }());
+
+        myobj.getName(); // "my, oh my"
+
+        var test = myobj.getName();
+        test = "julia";
+        var test2 = myobj.getName(); 
+
+
+        // Prototypes and privacy
+
+        function Gadget() {
+            // private member
+            var name = 'iPod';
+            // public function
+            this.getName = function () {
+                return name;
+            };
+
+        }
+
+        Gadget.prototype = (function () {
+            // private member
+            var browser = "Mobile Webkit";
+            // public prototype members
+            return {
+                getBrowser: function () {
+                    return browser;
+                }
+            };
+        }());
+
+        var toy = new Gadget();
+        console.log(toy.getName()); // privileged "own" method
+        console.log(toy.getBrowser()); // privileged prototype method
+        </script>
+</head>
+<body>
+
+</body>
+</html>

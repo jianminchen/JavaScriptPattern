@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        var myarray;
+        (function () {
+            var astr = "[object Array]",
+            toString = Object.prototype.toString;
+            function isArray(a) {
+                return toString.call(a) === astr;
+            }
+            function indexOf(haystack, needle) {
+                var i = 0,
+                max = haystack.length;
+                for (; i < max; i += 1) {
+                    if (haystack[i] === needle) {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+            myarray = {
+                isArray: isArray,
+                indexOf: indexOf,
+                inArray: indexOf
+            };
+        }());
+
+        myarray.isArray([1,2]); // true
+        myarray.isArray({0: 1}); // false
+        myarray.indexOf(["a", "b", "z"], "z"); // 2
+        myarray.inArray(["a", "b", "z"], "z"); // 2
+
+
+        //to the public indexOf, set public indexOf to null, but private indexOf still safe
+        myarray.indexOf = null;
+        myarray.inArray(["a", "b", "z"], "z"); // 2
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script>
+        var hardtoread = function () {
+            return 1;
+        }();
+        var easytoread = (function () {
+            return 1;
+        })();
+        hardtoread === easytoread; // true
+
+
+        var next, previous, rewind; // Globals
+        (function () {
+            // Private data
+            var index = -1;
+
+            var data = ['eeny', 'meeny', 'miny', 'moe'];
+            var count = data.length;
+            next = function () {
+                if (index < count) {
+                    index++;
+                }
+                return data[index];
+            };
+            previous = function () {
+                if (index >= 0) {
+                    index--;
+                }
+                return data[index];
+            };
+            rewind = function () {
+                index = -1;
+            };
+        }());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
